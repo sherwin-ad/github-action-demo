@@ -16,4 +16,4 @@ jobs:
         run: |
           echo "MY_TOP_SECRET: $MY_TOP_SECRET"
         env:
-          MY_TOP_SECRET: ${f secrets.MY_TOP_SECRET }}
+          MY_TOP_SECRET: ${{ secrets.MY_TOP_SECRET }}
