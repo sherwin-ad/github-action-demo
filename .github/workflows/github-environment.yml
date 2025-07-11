@@ -13,5 +13,4 @@ jobs:
 
     steps:
       name: Print secrets from environment
-        run: |
-          echo "APP_SECRET ${{ secrets.APP_SECRET }}"
+        run: echo "APP_SECRET ${{ secrets.APP_SECRET }}"
