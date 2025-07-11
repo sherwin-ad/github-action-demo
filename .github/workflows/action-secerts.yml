@@ -9,8 +9,8 @@ jobs:
     steps:
       - name: Print Secret
         run: |
-          echo "MY_TOP_SECRET: ${f secrets.MY_TOP_SECRET }}" 
-          echo "i_dont_exist: $ff secrets.i_dont_exist }}"
+          echo "MY_TOP_SECRET: ${{ secrets.MY_TOP_SECRET }}" 
+          echo "i_dont_exist: ${{ secrets.i_dont_exist }}"
       
       - name: Print Secret as an environment variable
         run: |
