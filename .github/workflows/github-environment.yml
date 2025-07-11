@@ -12,5 +12,6 @@ jobs:
       url: https://github.com
 
     steps:
-      name: Print secrets from environment
-        run: echo "APP_SECRET ${{ secrets.APP_SECRET }}"
+      - name: Print secrets from environment
+        run: | 
+          echo "APP_SECRET: ${{ secrets.APP_SECRET }}"
