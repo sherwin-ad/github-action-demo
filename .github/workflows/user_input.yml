@@ -16,9 +16,9 @@ jobs:
   add_numbers:
     runs-on: ubuntu-latest
     steps:
-      - name: Add numbers
-        id: sum
-        run: echo $(( ${{ github.event.inputs.number1 }} + ${{ github.event.inputs.number2 }} ))
+        - name: Add numbers
+          id: sum
+          run: echo $(( ${{ github.event.inputs.number1 }} + ${{ github.event.inputs.number2 }} ))
 
-       - name: Display sum
-         run: echo "The sum of ${{ github.event.inputs.number1 }} and ${{ github.event.inputs.number2 }} is ${{ steps.sum.outputs.result }}"
+        - name: Display sum
+          run: echo "The sum of ${{ github.event.inputs.number1 }} and ${{ github.event.inputs.number2 }} is ${{ steps.sum.outputs.result }}"
