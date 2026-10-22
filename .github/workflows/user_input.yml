@@ -16,9 +16,23 @@ jobs:
   add_numbers:
     runs-on: ubuntu-latest
     steps:
-        - name: Add numbers
-          id: sum
-          run: echo $(( ${{ github.event.inputs.number1 }} + ${{ github.event.inputs.number2 }} ))
+      - name: Add numbers
+        id: sum
+        env:
+          NUMBER1: ${{ github.event.inputs.number1 }}
+          NUMBER2: ${{ github.event.inputs.number2 }}
+        run: |
+          if ! [[ "$NUMBER1" =~ ^-?[0-9]+$ && "$NUMBER2" =~ ^-?[0-9]+$ ]]; then
+            echo "Both inputs must be integers." >&2
+            exit 1
+          fi
 
-        - name: Display sum
-          run: echo "The sum of ${{ github.event.inputs.number1 }} and ${{ github.event.inputs.number2 }} is ${{ steps.sum.outputs.sum }}"
+          sum=$((NUMBER1 + NUMBER2))
+          echo "sum=$sum" >> "$GITHUB_OUTPUT"
+
+      - name: Display sum
+        env:
+          NUMBER1: ${{ github.event.inputs.number1 }}
+          NUMBER2: ${{ github.event.inputs.number2 }}
+          SUM: ${{ steps.sum.outputs.sum }}
+        run: echo "The sum of $NUMBER1 and $NUMBER2 is $SUM"
