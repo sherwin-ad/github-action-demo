@@ -3,25 +3,22 @@ name: Test User Input workflow
 on:
   workflow_dispatch:
     inputs:
-        number1:
-            description: 'First number'
-            required: true
-            default: '0'
-        number2:
-            description: 'Second number'
-            required: true
-            default: '0'
+      number1:
+        description: 'First number'
+        required: true
+        default: '0'
+      number2:
+        description: 'Second number'
+        required: true
+        default: '0'
 
 jobs:
-    add_numbers:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Add numbers
-              id: sum
-                run: |
-                    echo "First number: ${{ github.event.inputs.number1 }}"
-                    echo "Second number: ${{ github.event.inputs.number2 }}"
-                    sum=$(( ${{ github.event.inputs.number1 }} + ${{ github.event.inputs.number2 }} ))
-                    echo "Sum: $sum"
-                    echo "::set-output name=result::$sum"
-        
+  add_numbers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add numbers
+        id: sum
+        run: echo $(( ${{ github.event.inputs.number1 }} + ${{ github.event.inputs.number2 }} ))
+
+       - name: Display sum
+         run: echo "The sum of ${{ github.event.inputs.number1 }} and ${{ github.event.inputs.number2 }} is ${{ steps.sum.outputs.result }}"
