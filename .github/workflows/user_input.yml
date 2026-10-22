@@ -21,4 +21,4 @@ jobs:
           run: echo $(( ${{ github.event.inputs.number1 }} + ${{ github.event.inputs.number2 }} ))
 
         - name: Display sum
-          run: echo "The sum of ${{ github.event.inputs.number1 }} and ${{ github.event.inputs.number2 }} is ${{ steps.sum.outputs.result }}"
+          run: echo "The sum of ${{ github.event.inputs.number1 }} and ${{ github.event.inputs.number2 }} is ${{ steps.sum.outputs.sum }}"
